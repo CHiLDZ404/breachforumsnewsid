@@ -1,21 +1,15 @@
 
-// Toggle dark/light mode
-const darkToggle = document.getElementById('darkToggle');
-darkToggle.addEventListener('click', ()=>{
-  document.body.classList.toggle('light');
-  darkToggle.textContent = document.body.classList.contains('light') ? '☀️' : '🌓';
-});
-
-// smooth reveal for cards
+// Toggle light/dark
 document.addEventListener('DOMContentLoaded', ()=>{
-  const cards = document.querySelectorAll('.card');
-  cards.forEach((c,i)=>{
-    c.style.opacity = 0;
-    c.style.transform = 'translateY(8px)';
-    setTimeout(()=>{
-      c.style.transition = 'opacity .4s ease, transform .4s ease';
-      c.style.opacity = 1;
-      c.style.transform = 'translateY(0)';
-    }, 80*i);
+  const btn = document.getElementById('themeToggle');
+  if(btn){
+    btn.addEventListener('click', ()=>{
+      document.body.classList.toggle('light');
+      btn.textContent = document.body.classList.contains('light') ? '🌞' : '🌓';
+    });
+  }
+  // reveal cards
+  document.querySelectorAll('.card').forEach((c,i)=>{
+    setTimeout(()=>{ c.style.opacity=1; c.style.transform='translateY(0)'; }, 60*i);
   });
 });
